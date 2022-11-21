@@ -1,6 +1,3 @@
-// 1. 사다리 인원 입력 받기
-// process.argv를 이용하여 사다리 게임에 참여할 인원을 입력받는다.
-// 만약 사다리 인원이 2명 미만이거나 8명을 초과할 경우 프로그램을 종료한다.
 import { argv } from 'node:process';
 
 const participant = Number(argv[2]);
@@ -10,4 +7,25 @@ if (participant < 2 || participant > 8) {
   process.exit();
 }
 
-console.log(`사다리게임 참가인원은 ${participant}명 입니다`);
+console.log(`사다리게임 참가인원은 ${participant}명입니다. 따라라라란딴 따라라라란딴`);
+
+const printLadder = (participant, heightOfLadder = 4) => {
+  const row = participant - 1;
+  const column = heightOfLadder;
+  const frameOfLadder = Array.from(Array(column), () => Array.from(Array(row)));
+  let completedLadder = '';
+
+  for (let i = 0; i < frameOfLadder.length; i++) {
+    for (let j = 0; j < row; j++) {
+      frameOfLadder[i][j] = Math.floor(Math.random() * 2) === 1 ? '-' : ' ';
+    }
+  }
+
+  frameOfLadder.forEach((any) => {
+    completedLadder += `|${any.join('|')}|\n`;
+  });
+
+  console.log(completedLadder.trim());
+};
+
+printLadder(participant);
