@@ -21,8 +21,8 @@ const printLadder = (participant, heightOfLadder = 4) => {
     }
   }
 
-  frameOfLadder.forEach((any) => {
-    completedLadder += `|${any.join('|')}|\n`;
+  frameOfLadder.forEach((frame) => {
+    completedLadder += `|${frame.join('|')}|\n`;
   });
 
   console.log(completedLadder.trim());
